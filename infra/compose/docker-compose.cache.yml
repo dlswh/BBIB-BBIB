@@ -1,0 +1,34 @@
+name: s14p31s207-cache
+
+services:
+  redis:
+    image: redis:7.4-alpine
+    container_name: s207-redis
+    restart: unless-stopped
+    command:
+      - redis-server
+      - --requirepass
+      - ${REDIS_PASSWORD}
+      - --appendonly
+      - "yes"
+    ports:
+      - "${LOCAL_BIND:-127.0.0.1}:${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli -a \"$REDIS_PASSWORD\" ping | grep PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - s207-app
+
+networks:
+  s207-app:
+    external: true
+    name: s207-app
+
+volumes:
+  redis-data:
+    name: s207-redis-data

@@ -1,0 +1,199 @@
+@media (max-width: 1120px) {
+  body {
+    overflow: auto;
+  }
+
+  .app-shell {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .workspace {
+    overflow: visible;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+  }
+
+  .connection-panel,
+  .distribution-panel,
+  .log-panel,
+  .pipeline-panel {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .kpi-grid,
+  .machine-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .pipeline-panel {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .pipeline-identity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 0 10px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pipeline-identity small {
+    margin-left: auto;
+  }
+
+  .pipeline-flow {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .pipeline-flow::before,
+  .pipeline-stage::after {
+    display: none;
+  }
+
+  .pipeline-summary {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .app-shell {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .global-header {
+    display: grid;
+    gap: 10px;
+    align-items: stretch;
+  }
+
+  .brand-block strong,
+  .brand-block span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .header-actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .system-pill,
+  .sync-pill,
+  .time-pill,
+  .theme-button,
+  .logout-button,
+  .profile-button {
+    width: 100%;
+  }
+
+  .bell-button,
+  .theme-button,
+  .logout-button {
+    width: 100%;
+    border: 1px solid var(--line);
+    background: var(--surface-control);
+  }
+
+  .sidebar {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .nav-item {
+    width: 100%;
+  }
+
+  .workspace {
+    padding: 10px;
+  }
+
+  .kpi-grid,
+  .machine-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .machine-grid {
+    height: auto;
+  }
+
+  .status-legend {
+    overflow-x: auto;
+  }
+
+  .connection-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .connection-content {
+    height: auto;
+  }
+
+  .distribution-body {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 12px;
+  }
+
+  .distribution-chart,
+  .distribution-legend {
+    grid-column: 1;
+    width: 100%;
+  }
+
+  .distribution-legend {
+    max-width: 280px;
+  }
+
+  .pipeline-panel {
+    display: grid;
+    gap: 10px;
+  }
+
+  .pipeline-identity {
+    display: grid;
+    gap: 6px;
+  }
+
+  .pipeline-identity small {
+    margin-left: 0;
+  }
+
+  .pipeline-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .pipeline-stage {
+    min-height: 54px;
+  }
+
+  .pipeline-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

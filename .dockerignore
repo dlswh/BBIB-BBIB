@@ -1,0 +1,14 @@
+.git
+.agents
+.local
+.vs
+artifacts
+
+**/node_modules
+**/dist
+**/build
+**/.gradle
+**/.idea
+
+infra/compose/.env
+*.pem

@@ -1,0 +1,146 @@
+.connection-panel {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.connection-content {
+  height: calc(100% - clamp(34px, 4.4vh, 48px));
+  display: grid;
+  grid-template-rows: auto 24px 1fr auto;
+  gap: 8px;
+  padding: 10px 12px;
+}
+
+.connection-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.connection-metric {
+  display: grid;
+  grid-template-columns: 1fr 34px;
+  align-items: end;
+  min-height: 74px;
+  padding: 10px;
+  border: 1px solid color-mix(in srgb, var(--metric) 42%, transparent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--metric) 11%, var(--surface-card));
+}
+
+.connection-metric svg {
+  color: var(--metric);
+  display: block;        /* ✅ 추가 */
+  margin-left: auto;
+}
+
+.connection-metric span {
+  display: block;
+  color: var(--text-default);
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.connection-metric strong {
+  display: block;
+  margin-top: 10px;
+  color: var(--metric);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.metric-green {
+  --metric: var(--accent-green);
+}
+
+.metric-blue {
+  --metric: var(--accent-blue);
+}
+
+.metric-red {
+  --metric: var(--accent-red);
+}
+
+.connection-subtitle {
+  display: flex;
+  align-items: end;
+  color: var(--text-strong);
+  font-size: 14px;
+}
+
+.connection-table {
+  width: max-content; 
+  min-width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; 
+}
+
+.connection-table th,
+.connection-table td {
+  height: 28px;
+  padding: 0 7px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-row);
+  color: var(--text-table);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.connection-table th {
+  color: var(--text-table-muted);
+  font-weight: 900;
+}
+
+.connection-table th:nth-child(1),
+.connection-table td:nth-child(1) {
+  width: 32%;
+}
+
+.connection-table th:nth-child(2),
+.connection-table td:nth-child(2) {
+  width: 18%;
+}
+
+.connection-table th:nth-child(4),
+.connection-table td:nth-child(4) {
+  width: 20%;
+}
+
+.online-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: var(--status-ready);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--status-ready) 50%, transparent);
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 21px;
+  padding: 0 7px;
+  border: 1px solid color-mix(in srgb, var(--accent-blue) 42%, transparent);
+  border-radius: 5px;
+  color: var(--accent-blue-soft);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.connection-more {
+  margin: 2px 0 0;
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.connection-table-wrapper {
+  overflow-y: auto;
+  overflow-x: auto;
+  min-height: 0; /* 원하는 높이로 조절 */
+}

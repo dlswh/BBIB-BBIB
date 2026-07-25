@@ -1,0 +1,238 @@
+.machine-panel {
+  grid-column: 1;
+  grid-row: 1;
+  border-color: color-mix(in srgb, var(--accent-blue) 34%, var(--line));
+  background:
+    radial-gradient(circle at 18% 0%, var(--machine-panel-glow), transparent 32%),
+    var(--panel);
+  box-shadow:
+    0 0 0 1px var(--machine-panel-ring),
+    var(--shadow-focus-panel);
+}
+
+.machine-panel .panel-title {
+  background: linear-gradient(90deg, color-mix(in srgb, var(--accent-blue) 12%, transparent), transparent 68%);
+}
+
+.machine-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  height: calc(100% - 76px);
+  padding: 8px 10px 6px;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  align-self: center;
+  margin: 0;
+  color: var(--text-subtle);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.machine-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  min-height: 0;
+  padding: 8px 10px;
+  border: 1px solid color-mix(in srgb, var(--status) 34%, var(--line));
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, var(--machine-card-grid-x) 1px, transparent 1px),
+    linear-gradient(var(--machine-card-grid-y) 1px, transparent 1px),
+    var(--surface-card);
+  background-size: 24px 24px;
+}
+
+.machine-card__head {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 9px;
+  align-items: start;
+  gap: var(--spacing-machine-header-gap);
+}
+
+.machine-card__head svg {
+  width: 30px;
+  height: 30px;
+  color: var(--text-default);
+}
+
+.machine-card__head strong {
+  overflow: hidden;
+  color: var(--text-strong);
+  font-size: clamp(22px, 1.35vw, 26px);
+  line-height: 1.04;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.machine-card__head > div {
+  display: grid;
+  justify-items: start;
+  gap: var(--spacing-machine-title-gap);
+  min-width: 0;
+}
+
+.machine-card__head i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--status);
+  box-shadow: 0 0 14px var(--status);
+}
+
+.status-ready {
+  --status: var(--status-ready);
+}
+
+.status-moving {
+  --status: var(--status-moving);
+}
+
+.status-jogging {
+  --status: var(--status-jogging);
+}
+
+.status-estopped {
+  --status: var(--status-estopped);
+}
+
+.status-error {
+  --status: var(--status-error);
+}
+
+.status-offline {
+  --status: var(--status-offline);
+}
+
+.machine-card.status-estopped,
+.machine-card.status-error {
+  border-color: color-mix(in srgb, var(--status) 58%, var(--line));
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--status) 13%, transparent), transparent 56%),
+    linear-gradient(90deg, var(--machine-card-grid-x) 1px, transparent 1px),
+    linear-gradient(var(--machine-card-grid-y) 1px, transparent 1px),
+    var(--surface-card-strong);
+  box-shadow:
+    inset 0 1px 0 var(--surface-highlight-strong),
+    0 0 24px color-mix(in srgb, var(--status) 13%, transparent);
+}
+
+.machine-card.status-offline {
+  opacity: 0.72;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 21px;
+  padding: 0 9px;
+  border: 1px solid color-mix(in srgb, var(--status) 52%, transparent);
+  border-radius: 5px;
+  background: color-mix(in srgb, var(--status) 17%, transparent);
+  color: var(--status);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.machine-card dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-self: end;
+  gap: 10px;
+  margin: 0;
+  padding-top: 10px;
+  border-top: 1px solid color-mix(in srgb, var(--status) 22%, var(--line));
+}
+
+.machine-card dl div {
+  display: grid;
+  align-content: end;
+  min-width: 0;
+  gap: 3px;
+}
+
+.machine-card dt {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.machine-card dd {
+  margin: 0;
+  overflow: hidden;
+  color: var(--text-value);
+  font-size: 16px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-legend {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: 34px;
+  padding: 0 12px;
+  border-top: 1px solid var(--line);
+  color: var(--text-soft);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.status-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--dot);
+}
+
+.status-legend b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  border-radius: 999px;
+  background: var(--surface-badge);
+}
+
+.legend-ready {
+  --dot: var(--status-ready);
+}
+
+.legend-moving {
+  --dot: var(--status-moving);
+}
+
+.legend-jogging {
+  --dot: var(--status-jogging);
+}
+
+.legend-estopped {
+  --dot: var(--status-estopped);
+}
+
+.legend-error {
+  --dot: var(--status-error);
+}
+
+.legend-offline {
+  --dot: var(--status-offline);
+}
+
+.status-legend em {
+  margin-left: auto;
+  color: var(--text-default);
+  font-style: normal;
+}

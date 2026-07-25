@@ -1,0 +1,231 @@
+.profile-menu {
+  position: relative;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  display: grid;
+  min-width: 210px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface-panel);
+  box-shadow: var(--shadow-focus-panel);
+}
+
+.profile-dropdown-summary {
+  display: grid;
+  gap: 3px;
+  padding: 8px 10px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-dropdown-summary strong {
+  color: var(--text-strong);
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.profile-dropdown-summary span {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.profile-dropdown button {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-default);
+  font-size: 13px;
+  font-weight: 850;
+  text-align: left;
+}
+
+.profile-dropdown button:hover {
+  background: var(--surface-highlight-strong);
+  color: var(--text-strong);
+}
+
+.profile-dropdown svg {
+  color: var(--accent-blue);
+}
+
+.account-panel {
+  position: fixed;
+  top: 84px;
+  right: 18px;
+  z-index: 35;
+  display: grid;
+  gap: 18px;
+  width: min(390px, calc(100vw - 32px));
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--surface-panel);
+  box-shadow: var(--shadow-focus-panel);
+}
+
+.account-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.account-panel-header span {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--accent-blue);
+  font-size: 12px;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.account-panel-header h2 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 23px;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.account-panel-header button {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface-control);
+  color: var(--text-soft);
+}
+
+.account-profile-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.account-profile-list div {
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface-control);
+}
+
+.account-profile-list dt {
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.account-profile-list dd {
+  margin: 0;
+  overflow: hidden;
+  color: var(--text-strong);
+  font-size: 14px;
+  font-weight: 900;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.account-form {
+  display: grid;
+  gap: 14px;
+}
+
+.account-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.account-form label span {
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.account-form input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface-control);
+  color: var(--text-strong);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.account-form input:disabled {
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.account-form input:focus {
+  border-color: var(--accent-blue);
+  outline: 0;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-blue) 18%, transparent);
+}
+
+.account-alert {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--sync-error-border);
+  border-radius: var(--radius-control);
+  background: var(--sync-error-bg);
+  color: var(--accent-red-soft);
+  font-size: 13px;
+  font-weight: 850;
+  line-height: 1.5;
+}
+
+.account-primary-button {
+  min-height: 44px;
+  border: 1px solid color-mix(in srgb, var(--accent-blue) 58%, var(--line));
+  border-radius: var(--radius-control);
+  background: var(--accent-blue);
+  color: var(--text-inverse);
+  font-size: 14px;
+  font-weight: 950;
+}
+
+.account-primary-button:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+@media (max-width: 760px) {
+  .profile-menu,
+  .profile-button {
+    width: 100%;
+  }
+
+  .profile-dropdown {
+    left: 0;
+    right: 0;
+    min-width: 0;
+  }
+
+  .account-panel {
+    top: 12px;
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+}

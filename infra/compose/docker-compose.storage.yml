@@ -1,0 +1,27 @@
+name: s14p31s207-storage
+
+services:
+  minio:
+    image: quay.io/minio/minio:latest
+    container_name: s207-minio
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    ports:
+      - "${LOCAL_BIND:-127.0.0.1}:${MINIO_API_PORT:-9000}:9000"
+      - "${LOCAL_BIND:-127.0.0.1}:${MINIO_CONSOLE_PORT:-9001}:9001"
+    volumes:
+      - minio-data:/data
+    networks:
+      - s207-app
+
+networks:
+  s207-app:
+    external: true
+    name: s207-app
+
+volumes:
+  minio-data:
+    name: s207-minio-data

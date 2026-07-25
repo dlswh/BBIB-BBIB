@@ -1,0 +1,63 @@
+html {
+  background-color: var(--color-bg-canvas);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, var(--color-bg-grid-primary) 1px, transparent 1px),
+    linear-gradient(var(--color-bg-grid-secondary) 1px, transparent 1px),
+    radial-gradient(circle at 12% 8%, var(--color-bg-glow), transparent 32%),
+    var(--bg);
+  background-size:
+    58px 58px,
+    58px 58px,
+    auto,
+    auto;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-blue);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  transform: translateY(-160%);
+  padding: 8px 12px;
+  border-radius: 4px;
+  background: var(--text-strong);
+  color: var(--color-bg-canvas);
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}

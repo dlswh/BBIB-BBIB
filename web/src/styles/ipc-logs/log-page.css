@@ -1,0 +1,190 @@
+/* styles/ipc-logs/log-page.css */
+
+.log-page {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* 헤더 */
+.log-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.log-page-header h2 {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 18px;
+  font-weight: 950;
+  letter-spacing: -0.01em;
+}
+
+.log-page-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface-control);
+  color: var(--text-soft);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.log-page-close:hover {
+  border-color: color-mix(in srgb, var(--accent-blue) 42%, var(--line));
+  color: var(--text-strong);
+}
+
+/* 필터 영역 */
+.log-page-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.log-page-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.log-page-filter-row input[type='datetime-local'],
+.log-page-filter-row select {
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: var(--surface-control);
+  color: var(--text-strong);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.log-page-filter-row input[type='datetime-local']:focus,
+.log-page-filter-row select:focus {
+  border-color: var(--accent-blue);
+  outline: 0;
+}
+
+.log-page-filter-sep {
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.log-page-reset {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.log-page-reset:hover {
+  color: var(--text-strong);
+}
+
+/* 타입 필터 버튼 */
+.log-page-type-btn {
+  height: 28px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-control);
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.log-page-type-btn.active {
+  border-color: var(--text-strong);
+  background: var(--surface-highlight-strong);
+  color: var(--text-strong);
+}
+
+/* 로그 목록 */
+.log-page-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  position: relative;  /* 추가 */
+}
+
+.log-page-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.log-page-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.log-page-table th,
+.log-page-table td {
+  height: 36px;
+  padding: 0 12px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-row);
+  color: var(--text-table);
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.log-page-table th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--surface-table-head);
+  color: var(--text-table-muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-align: left;
+}
+
+.log-page-table th:nth-child(1),
+.log-page-table td:nth-child(1) { width: 160px; }
+
+.log-page-table th:nth-child(2),
+.log-page-table td:nth-child(2) { width: 110px; }
+
+.log-page-table th:nth-child(3),
+.log-page-table td:nth-child(3) { width: 90px; }
+
+.log-page-table td:nth-child(4) {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.log-page-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.log-page-footer {
+  padding: 12px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+}

@@ -1,0 +1,147 @@
+/* styles/dashboard/ipc-error-dialog.css */
+
+.ipc-error-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(2, 8, 18, 0.62);
+  backdrop-filter: blur(2px);
+}
+
+.ipc-error-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 201;
+  transform: translate(-50%, -50%);
+  display: grid;
+  width: min(420px, calc(100vw - 32px));
+  border: 1px solid color-mix(in srgb, var(--accent-red) 48%, var(--line));
+  border-radius: var(--radius-panel);
+  background: var(--surface-panel);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent-red) 18%, transparent),
+    var(--shadow-focus-panel);
+  overflow: hidden;
+}
+
+/* 헤더 */
+.ipc-error-dialog__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--accent-red) 28%, var(--line));
+  background: color-mix(in srgb, var(--accent-red) 8%, var(--surface-panel));
+}
+
+.ipc-error-dialog__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent-red) 16%, transparent);
+  color: var(--accent-red);
+}
+
+.ipc-error-dialog__title {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 16px;
+  font-weight: 950;
+  letter-spacing: 0;
+}
+
+/* 본문 */
+.ipc-error-dialog__body {
+  padding: 14px 16px;
+}
+
+.ipc-error-detail {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+}
+
+.ipc-error-detail__row {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 10px;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--border-row);
+  border-radius: var(--radius-control);
+  background: var(--surface-control);
+}
+
+.ipc-error-detail__row dt {
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.ipc-error-detail__row dd {
+  margin: 0;
+  padding: 6px 0;
+  overflow: hidden;
+  color: var(--text-strong);
+  font-size: 13px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 긴 텍스트 항목 (상황, 조치 방법)은 줄바꿈 허용 */
+.ipc-error-detail__row--multiline dd {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.5;
+  padding: 6px 0;
+}
+
+.ipc-error-code-badge {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding: 0 7px;
+  margin-right: 6px;
+  border: 1px solid color-mix(in srgb, var(--accent-red) 48%, transparent);
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent-red) 13%, transparent);
+  color: var(--accent-red-soft);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+/* 푸터 */
+.ipc-error-dialog__footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px 16px 14px;
+  border-top: 1px solid var(--line);
+}
+
+.ipc-error-dialog__confirm {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  min-height: 36px;
+  padding: 0 18px;
+  border: 1px solid color-mix(in srgb, var(--accent-blue) 58%, var(--line));
+  border-radius: var(--radius-control);
+  background: var(--accent-blue);
+  color: var(--text-inverse);
+  font-size: 14px;
+  font-weight: 950;
+  cursor: pointer;
+}
+
+.ipc-error-dialog__confirm:hover {
+  background: color-mix(in srgb, var(--accent-blue) 85%, white);
+}

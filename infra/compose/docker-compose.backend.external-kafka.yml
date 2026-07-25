@@ -1,0 +1,5 @@
+services:
+  backend:
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: ${BACKEND_KAFKA_BOOTSTRAP_SERVERS:-k14s207.p.ssafy.io:9092}
+      SPRING_KAFKA_CONSUMER_GROUP_ID: ${BACKEND_KAFKA_CONSUMER_GROUP_ID:-backend-external-local}

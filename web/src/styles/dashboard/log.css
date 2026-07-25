@@ -1,0 +1,175 @@
+.log-panel {
+  grid-column: 1;
+  grid-row: 2;
+  background:
+    linear-gradient(180deg, var(--surface-highlight-subtle), transparent 48%),
+    var(--surface-log-panel);
+  display: flex;
+  flex-direction: column;
+}
+
+.log-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.log-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 26px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface-control-strong);
+  color: var(--text-default);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.log-table th,
+.log-table td {
+  height: 21px;
+  padding: 0 10px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border-row);
+  color: var(--text-table);
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.log-table th {
+  background: var(--surface-table-head);
+  color: var(--text-table-muted);
+  font-weight: 900;
+}
+
+.log-table th:nth-child(1),
+.log-table td:nth-child(1) {
+  width: 174px;
+}
+
+.log-table th:nth-child(2),
+.log-table td:nth-child(2) {
+  width: 96px;
+}
+
+.log-table th:nth-child(3),
+.log-table td:nth-child(3) {
+  width: 82px;
+}
+
+.log-table th:nth-child(5),
+.log-table td:nth-child(5) {
+  width: 112px;
+}
+
+.log-table td:nth-child(4) {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+
+.log-level {
+  display: inline-grid;
+  place-items: center;
+  min-width: 58px;
+  height: 18px;
+  border: 1px solid color-mix(in srgb, var(--level) 50%, transparent);
+  border-radius: 4px;
+  color: var(--level);
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.log-row-info td {
+  color: var(--text-muted);
+}
+
+.log-row-warn td,
+.log-row-error td,
+.log-row-critical td {
+  color: var(--text-strong);
+}
+
+.log-row-warn td {
+  background: var(--row-warn-bg);
+}
+
+.log-row-error td,
+.log-row-critical td {
+  background: var(--row-error-bg);
+}
+
+.level-error {
+  --level: var(--severity-error);
+}
+
+.level-critical {
+  --level: var(--severity-critical);
+}
+
+.level-warn {
+  --level: var(--severity-warn);
+}
+
+.level-info {
+  --level: var(--severity-info);
+}
+/* log.css 기존 내용 아래에 추가 */
+
+.log-filter-dropdown {
+  position: relative;
+}
+
+.log-filter-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 100;
+  min-width: 100%;
+  margin: 0;
+  padding: 4px 0;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--surface-control-strong);
+  list-style: none;
+}
+
+.log-filter-menu li {
+  list-style: none;  /* 추가 */
+}
+
+.log-filter-item {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  color: var(--text-default);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+
+.log-filter-item:hover {
+  background: var(--surface-highlight-subtle);
+}
+
+.log-filter-item-active {
+  color: var(--severity-info);
+}
+
+.log-table-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}

@@ -1,0 +1,46 @@
+name: s14p31s207-sse-test
+
+services:
+  topic-init:
+    image: apache/kafka:3.9.1
+    container_name: s207-sse-test-topic-init
+    restart: "no"
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: ${FAKE_IPC_KAFKA_BOOTSTRAP_SERVERS:-k14s207.p.ssafy.io:9092}
+    command:
+      - sh
+      - -c
+      - |
+        until /opt/kafka/bin/kafka-topics.sh --bootstrap-server "$$KAFKA_BOOTSTRAP_SERVERS" --list >/dev/null 2>&1; do
+          echo "waiting for kafka at $$KAFKA_BOOTSTRAP_SERVERS"
+          sleep 2
+        done
+
+        for topic in ipc.motor.state ipc.motor.command ipc.motor.error; do
+          /opt/kafka/bin/kafka-topics.sh \
+            --bootstrap-server "$$KAFKA_BOOTSTRAP_SERVERS" \
+            --create \
+            --if-not-exists \
+            --topic "$$topic" \
+            --partitions 3 \
+            --replication-factor 1
+        done
+
+  fake-ipc-state-pub:
+    build:
+      context: ../..
+      dockerfile: tools/fake-ipc-state-publisher/Dockerfile
+    image: s14p31s207-fake-ipc-state-publisher:${FAKE_IPC_IMAGE_TAG:-latest}
+    container_name: s207-fake-ipc-state-pub
+    restart: unless-stopped
+    depends_on:
+      topic-init:
+        condition: service_completed_successfully
+    environment:
+      TZ: Asia/Seoul
+      KAFKA_BOOTSTRAP_SERVERS: ${FAKE_IPC_KAFKA_BOOTSTRAP_SERVERS:-k14s207.p.ssafy.io:9092}
+      KAFKA_TOPIC: ${FAKE_IPC_KAFKA_TOPIC:-ipc.motor.state}
+      IPC_IDS: ${FAKE_IPC_IDS:-v-ipc-1,v-ipc-2,v-ipc-3,v-ipc-5}
+      INTERVAL_MS: ${FAKE_IPC_INTERVAL_MS:-1000}
+      STATE_SEQUENCE: ${FAKE_IPC_STATE_SEQUENCE:-MOVING,MOVING,MOVING,MOVING,MOVING,READY,READY,JOGGING,JOGGING,JOGGING,JOGGING,READY,READY}
+      STATE_OFFSETS: ${FAKE_IPC_STATE_OFFSETS:-0,5,7,11}

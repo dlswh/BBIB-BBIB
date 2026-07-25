@@ -1,0 +1,14 @@
+name: s14p31s207-node-exporter
+
+services:
+  node-exporter:
+    image: prom/node-exporter:v1.8.2
+    container_name: s207-node-exporter
+    restart: unless-stopped
+    network_mode: host
+    pid: host
+    command:
+      - --path.rootfs=/host
+      - --web.listen-address=${LOCAL_BIND:-127.0.0.1}:${NODE_EXPORTER_PORT:-9100}
+    volumes:
+      - /:/host:ro,rslave
